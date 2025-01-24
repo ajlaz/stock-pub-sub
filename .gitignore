@@ -1,3 +1,4 @@
 .vscode
 publisher/build
 publisher/config.json
+subscriber/build

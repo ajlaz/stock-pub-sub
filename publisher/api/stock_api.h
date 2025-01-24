@@ -4,6 +4,7 @@
 #include <string>
 #include <nlohmann/json.hpp>
 #include <cpr/cpr.h>
+#include <iostream>
 #include "../models/stock.h"
 
 class StockAPI

@@ -2,9 +2,11 @@
 #include "config/config.h"
 #include "api/stock_api.h"
 #include "models/stock.h"
+#include "tcp/tcp_publisher.h"
+#include <string>
 #include <fstream>
 
-int main()
+int main(int argc, char *argv[])
 {
     // Load configuration
 
@@ -15,19 +17,24 @@ int main()
         return 1;
     }
 
-    // Initialize stock API
-    StockAPI stockApi(config.getAPIKey());
-
-    // Fetch stock data
-    std::string stockSymbol = "AAPL";
-    Stock data = stockApi.getQuote(stockSymbol);
-    if (data.getSymbol() == stockSymbol)
+    if (argc < 3)
     {
-        std::cout << "Stock data for " << stockSymbol << ": " << data.toString() << std::endl;
+        std::cerr << "Usage: " << argv[0] << " <port> <symbol>" << std::endl;
+        return 1;
+    }
+
+    int port = std::stoi(argv[1]);
+    std::string symbol = argv[2];
+    TCPPublisher publisher(port, config, symbol);
+
+    if (publisher.start())
+    {
+        std::cout << "Publisher started on port " << port << std::endl;
     }
     else
     {
-        std::cerr << "Failed to fetch stock data for " << stockSymbol << std::endl;
+        std::cerr << "Failed to start publisher on port " << port << std::endl;
+        return 1;
     }
 
     return 0;

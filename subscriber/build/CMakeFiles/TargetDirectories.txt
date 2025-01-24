@@ -1,0 +1,9 @@
+/Users/adenlazarus/projects/stock-pub-sub/subscriber/build/CMakeFiles/stock_subscriber.dir
+/Users/adenlazarus/projects/stock-pub-sub/subscriber/build/CMakeFiles/edit_cache.dir
+/Users/adenlazarus/projects/stock-pub-sub/subscriber/build/CMakeFiles/rebuild_cache.dir
+/Users/adenlazarus/projects/stock-pub-sub/subscriber/build/tcp/CMakeFiles/tcp_lib.dir
+/Users/adenlazarus/projects/stock-pub-sub/subscriber/build/tcp/CMakeFiles/edit_cache.dir
+/Users/adenlazarus/projects/stock-pub-sub/subscriber/build/tcp/CMakeFiles/rebuild_cache.dir
+/Users/adenlazarus/projects/stock-pub-sub/subscriber/build/models/CMakeFiles/models_lib.dir
+/Users/adenlazarus/projects/stock-pub-sub/subscriber/build/models/CMakeFiles/edit_cache.dir
+/Users/adenlazarus/projects/stock-pub-sub/subscriber/build/models/CMakeFiles/rebuild_cache.dir

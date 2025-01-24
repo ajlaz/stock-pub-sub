@@ -14,10 +14,25 @@ Stock StockAPI::getQuote(const std::string &symbol) const
     // Parse the JSON response
     auto jsonResponse = nlohmann::json::parse(response.text);
 
-    // Extract the relevant fields from the JSON response
-    auto globalQuote = jsonResponse["Global Quote"];
-    std::string price = globalQuote["05. price"];
-    std::string volume = globalQuote["06. volume"];
+    try
+    {
+        // Extract the relevant fields from the JSON response
+        auto globalQuote = jsonResponse["Global Quote"];
+        if (globalQuote.empty())
+        {
+            std::cerr << "request limit reached" << std::endl;
+            return Stock(symbol, 0.0);
+        }
+        std::string price = globalQuote["05. price"];
+        std::string volume = globalQuote["06. volume"];
 
-    return Stock(symbol, std::stod(price));
+        return Stock(symbol, std::stod(price));
+    }
+    catch (const nlohmann::json::exception &e)
+    {
+        std::cerr << "request limit reached" << std::endl;
+        return Stock(symbol, 0.0);
+    }
+
+    return Stock(symbol, 0.0);
 };

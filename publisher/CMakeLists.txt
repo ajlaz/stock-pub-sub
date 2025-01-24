@@ -13,6 +13,7 @@ find_package(cpr REQUIRED)
 add_subdirectory(models)
 add_subdirectory(api)
 add_subdirectory(config)
+add_subdirectory(tcp)
 
 # Collect all source files from the main directory
 set(SRC_FILES main.cpp)
@@ -25,4 +26,4 @@ target_link_libraries(stock_publisher PRIVATE nlohmann_json::nlohmann_json)
 target_link_libraries(stock_publisher PRIVATE cpr::cpr)
 
 # Link libraries from subdirectories
-target_link_libraries(stock_publisher PRIVATE models_lib api_lib config_lib)
+target_link_libraries(stock_publisher PRIVATE models_lib api_lib config_lib tcp_lib)
